@@ -1,0 +1,37 @@
+<h1 class="p-2 text-primary">BibSys</h1>
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+  <div class="form-row mb-3">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" placeholder="Ex: administrador" class="form-control" formControlName="login">
+        <ng-container *ngIf="formService.showErrorMessage(loginForm, 'login')">
+          <span class="d-block invalid-feedback">Por favor, insira um nome de usuário válido.</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="********" class="form-control" formControlName="senha">
+        <ng-container *ngIf="formService.showErrorMessage(loginForm, 'senha')">
+          <span class="d-block invalid-feedback">Por favor, insira uma senha válida.</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-3">
+    <div class="col-12">
+      <div class="form-group d-flex justify-content-around">
+        <input type="reset" value="Limpar" class="btn btn-outline-primary">
+        <input type="submit" value="Entrar" class="btn btn-primary">
+      </div>
+    </div>
+  </div>
+</form>
+<footer class="text-center fixed-bottom">
+  <h6>Engenharia de Software - UGV</h6>
+  <h6>2022</h6>
+</footer>
