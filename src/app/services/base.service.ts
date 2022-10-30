@@ -14,23 +14,23 @@ export abstract class BaseService<T> {
     private endpoint: String
   ) { }
 
-  protected getAll(): Observable<any> {
+  public getAll(): Observable<any> {
     return this.http.get(`${this.baseUrl}/${this.endpoint}`);
   }
 
-  protected getById(id: number): Observable<any> {
+  public getById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${this.endpoint}/${id}`);
   }
 
-  protected post(object: T): Observable<any> {
+  public post(object: T): Observable<any> {
     return this.http.post(`${this.baseUrl}/${this.endpoint}`, object);
   }
 
-  protected put(object: T): Observable<any> {
+  public put(object: T): Observable<any> {
     return this.http.put(`${this.baseUrl}/${this.endpoint}`, object);
   }
 
-  protected delete(id: number): Observable<any> {
+  public delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${this.endpoint}/${id}`);
   }
 }

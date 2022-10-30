@@ -7,13 +7,17 @@ import { RouterModule } from '@angular/router';
 import { BaseListComponent } from './base-list/base-list.component';
 import { BaseFormComponent } from './base-form/base-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormHeaderComponent } from './base-form/form-header/form-header.component';
+import { FormFooterComponent } from './base-form/form-footer/form-footer.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     ToasterComponent,
     BaseListComponent,
-    BaseFormComponent
+    BaseFormComponent,
+    FormHeaderComponent,
+    FormFooterComponent
   ],
   imports: [
     CommonModule,
