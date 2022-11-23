@@ -1,1 +1,26 @@
-<p>alunos-list works!</p>
+<h4 class="title">Alunos</h4>
+
+<div class="row" style="margin: 2rem 0rem 0rem 0rem;">
+  <div class="col">
+    <button class="btn btn-outline-primary float-right" type="button" [routerLink]="['/alunos/novo']">Novo Aluno</button>
+
+    <table class="table table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Período</th>
+          <th scope="col">Etapa</th>
+          <th scope="col">Ano</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cursor-pointer" *ngFor="let item of alunos" [routerLink]="[item.id]">
+          <td>{{ item.nome }}</td>
+          <td>{{ item.periodo }}</td>
+          <td>{{ item.etapa }}</td>
+          <td>{{ item.ano }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

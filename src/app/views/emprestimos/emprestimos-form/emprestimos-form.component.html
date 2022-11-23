@@ -1,1 +1,46 @@
-<p>emprestimos-form works!</p>
+<h4 class="title">Novo Empréstimo</h4>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="row" style="margin: 2rem 0rem 0rem 1rem;">
+    <div class="row">
+      <button class="btn btn-outline-secondary col-md-1 col-6 mb-3 mr" type="button"
+        [routerLink]="['/emprestimos']">Voltar</button>
+
+      <button *ngIf="id" class="btn btn-outline-danger col-md-1 col-6 mb-3" type="button"
+        (click)="deletar()">Deletar</button>
+    </div>
+
+    <div class="form-group col-md-6 col-12 mb-3">
+      <label class="smal-label" for="idAluno">Aluno</label>
+      <select class="form-control" id="aluno" name="idAluno" [(ngModel)]="emprestimo.id_aluno" [disabled]="id">
+        <option *ngFor="let item of alunos" [ngValue]="item.id">{{ item.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-6 col-12 mb-3">
+      <label class="smal-label" for="idLivro">Livro</label>
+      <select class="form-control" id="livro" name="idLivro" [(ngModel)]="emprestimo.id_livro" [disabled]="id">
+        <option *ngFor="let item of livros" [ngValue]="item.id">{{ item.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-6 col-12 mb-3">
+      <label class="smal-label" for="dataEmprestimo">Data Empréstimo</label>
+      <input type="date" class="form-control" placeholder="Data Empréstimo" aria-describedby="basic-addon2"
+        name="dataEmprestimo" [(ngModel)]="emprestimo.data_emprestimo" disabled>
+    </div>
+
+    <div class="form-group col-md-6 col-12 mb-3">
+      <label class="smal-label" for="dataDevolução">Data Devolução</label>
+      <input type="date" class="form-control" placeholder="Data Devolução" aria-describedby="basic-addon2"
+        name="dataDevolucao" [(ngModel)]="emprestimo.data_devolucao">
+    </div>
+
+    <div class="form-group col-md-12 col-12 mb-3">
+      <input type="checkbox" id="devolvido" name="devolvido" [(ngModel)]="emprestimo.devolvido" [disabled]="!id">&nbsp;
+      <label class="cursor-pointer" for="devolvido">Devolvido</label>
+    </div>
+
+    <button class="btn btn-outline-primary col-md-1 col-12" type="submit">Salvar</button>
+  </div>
+</form>

@@ -4,23 +4,9 @@ import { EmprestimosFormComponent } from './emprestimos-form/emprestimos-form.co
 import { EmprestimosListComponent } from './emprestimos-list/emprestimos-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: EmprestimosListComponent,
-    children: [
-      {
-        path: 'novo',
-        pathMatch: 'full',
-        component: EmprestimosFormComponent
-      },
-      {
-        path: ':id',
-        pathMatch: 'full',
-        component: EmprestimosFormComponent
-      }
-    ]
-  }
+  { path: '', component: EmprestimosListComponent },
+  { path: 'novo', component: EmprestimosFormComponent },
+  { path: ':id', component: EmprestimosFormComponent },
 ];
 
 @NgModule({

@@ -1,1 +1,39 @@
-<p>alunos-form works!</p>
+<h4 class="title">Novo aluno</h4>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="row" style="margin: 2rem 0rem 0rem 1rem;">
+    <div class="row">
+      <button class="btn btn-outline-secondary col-md-1 col-6 mb-3 mr" type="button"
+        [routerLink]="['/alunos']">Voltar</button>
+
+      <button *ngIf="id" class="btn btn-outline-danger col-md-1 col-6 mb-3" type="button"
+        (click)="deletar()">Deletar</button>
+    </div>
+
+    <div class="form-group col-md-12 col-12 mb-3">
+      <label class="smal-label" for="nome">Nome</label>
+      <input type="text" class="form-control col-6" placeholder="Nome" aria-describedby="basic-addon2" name="nome"
+        [(ngModel)]="aluno.nome">
+    </div>
+
+    <div class="form-group col-md-4 col-12 mb-3">
+      <label class="smal-label" for="periodo">Período</label>
+      <input type="text" class="form-control" placeholder="Período" aria-describedby="basic-addon2" name="periodo"
+        [(ngModel)]="aluno.periodo">
+    </div>
+
+    <div class="form-group col-md-4 col-12 mb-3">
+      <label class="smal-label" for="etapa">Etapa</label>
+      <input type="text" class="form-control" placeholder="Etapa" aria-describedby="basic-addon2" name="etapa"
+        [(ngModel)]="aluno.etapa">
+    </div>
+
+    <div class="form-group col-md-4 col-12 mb-3">
+      <label class="smal-label" for="ano">Ano</label>
+      <input type="number" class="form-control" placeholder="Ano" aria-describedby="basic-addon2" name="ano"
+        [(ngModel)]="aluno.ano">
+    </div>
+
+    <button class="btn btn-outline-primary col-md-1 col-12" type="submit">Salvar</button>
+  </div>
+</form>

@@ -1,26 +1,62 @@
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Livro } from 'src/app/models/Livro';
 import { LivroService } from 'src/app/services/livro.service';
-import { ToasterService } from 'src/app/services/toaster.service';
-import { BaseFormComponent } from '../../core/base-form/base-form.component';
 
 @Component({
   selector: 'app-livros-form',
   templateUrl: './livros-form.component.html',
   styleUrls: ['./livros-form.component.css']
 })
-export class LivrosFormComponent extends BaseFormComponent<Livro>  {
+export class LivrosFormComponent implements OnInit {
+  livro: any = {
+    nome: null,
+    autor: null,
+    editora: null,
+    genero: null,
+    estoque: null,
+    id: null
+  }
+
+  id: any;
 
   constructor(
-    activatedRoute: ActivatedRoute,
-    protected livroService: LivroService,
-    formBuilder: FormBuilder,
-    router: Router,
-    toasterService: ToasterService
-  ) { 
-    super(activatedRoute, formBuilder, router, livroService, toasterService)
+    public livroService: LivroService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+
+      if (this.id) {
+        livroService.getById(this.id).subscribe(data => {
+          this.livro = data;
+        })
+      }
+    });
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  onSubmit(form: any) {
+    if (this.id) {
+      form.form.value.id = this.id;
+      
+      this.livroService.put(form.form.value).subscribe(data => {
+        this.router.navigate(['/livros']);
+      });
+    } else {
+      this.livroService.post(form.form.value).subscribe(data => {
+        this.router.navigate(['/livros']);
+       });
+    }
+  }
+
+  deletar() {
+    this.livroService.delete(this.id).subscribe(data => {
+      this.router.navigate(['/livros']);
+    });
   }
 
 }

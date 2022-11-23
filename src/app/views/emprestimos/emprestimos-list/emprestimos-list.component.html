@@ -1,1 +1,28 @@
-<p>emprestimos-list works!</p>
+<h4 class="title">Empréstimos</h4>
+
+<div class="row" style="margin: 2rem 0rem 0rem 0rem;">
+  <div class="col">
+    <button class="btn btn-outline-primary float-right" type="button" [routerLink]="['/emprestimos/novo']">Novo Empréstimo</button>
+
+    <table class="table table">
+      <thead>
+        <tr>
+          <th scope="col">Aluno</th>
+          <th scope="col">Livro</th>
+          <th scope="col">Data empréstimo</th>
+          <th scope="col">Data devolução</th>
+          <th scope="col">Devolvido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cursor-pointer" *ngFor="let item of emprestimos" [routerLink]="[item.id]" [ngClass]="[checkOk(item.devolvido) ? 'devolvido' : '' , checkAtrasado(item.devolvido, item.data_devolucao) ? 'atrasado': '']">
+          <td>{{ item.nome_aluno }}</td>
+          <td>{{ item.nome_livro }}</td>
+          <td>{{ convertDate(item.data_emprestimo) }}</td>
+          <td>{{ convertDate(item.data_devolucao) }}</td>
+          <td>{{ item.devolvido == true ? 'Sim' : 'Não' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,1 +1,28 @@
-<p>livros-list works!</p>
+<h4 class="title">Livros</h4>
+
+<div class="row" style="margin: 2rem 0rem 0rem 0rem;">
+  <div class="col">
+    <button class="btn btn-outline-primary float-right" type="button" [routerLink]="['/livros/novo']">Novo Livro</button>
+
+    <table class="table table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Editora</th>
+          <th scope="col">Gênero</th>
+          <th scope="col">Estoque</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cursor-pointer" *ngFor="let item of livros" [routerLink]="[item.id]">
+          <td>{{ item.nome }}</td>
+          <td>{{ item.autor }}</td>
+          <td>{{ item.editora }}</td>
+          <td>{{ item.genero }}</td>
+          <td>{{ item.estoque }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

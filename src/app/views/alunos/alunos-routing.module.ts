@@ -4,23 +4,9 @@ import { AlunosFormComponent } from './alunos-form/alunos-form.component';
 import { AlunosListComponent } from './alunos-list/alunos-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: AlunosListComponent,
-    children: [
-      {
-        path: 'novo',
-        pathMatch: 'full',
-        component: AlunosFormComponent
-      },
-      {
-        path: ':id',
-        pathMatch: 'full',
-        component: AlunosFormComponent
-      }
-    ]
-  }
+  { path: '', component: AlunosListComponent },
+  { path: 'novo', component: AlunosFormComponent },
+  { path: ':id', component: AlunosFormComponent },
 ];
 
 @NgModule({

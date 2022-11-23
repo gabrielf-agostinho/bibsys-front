@@ -1,4 +1,4 @@
-<div class="px-sm-2 px-0 bg-dark">
+<!-- <div class="px-sm-2 px-0 bg-dark">
   <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
     <a routerLinkActive="true" [routerLink]="'/'"
       class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -32,4 +32,40 @@
     </ul>
     <hr>
   </div>
+</div> -->
+
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus icon'></i>
+    <div class="logo_name">BibSys</div>
+  </div>
+  <ul class="nav-list">
+    <li class="list" [routerLink]="'/alunos'">
+      <a>
+        <fa-icon class="icones" [icon]="faUser"></fa-icon>
+        <span class="ms-1 d-none d-sm-inline links_name">Alunos</span>
+      </a>
+    </li>
+
+    <li class="list" [routerLink]="'/livros'">
+      <a>
+        <fa-icon class="icones" [icon]="faBook"></fa-icon>
+        <span class="ms-1 d-none d-sm-inline links_name">Livros</span>
+      </a>
+    </li>
+
+    <li class="list" [routerLink]="'/emprestimos'">
+      <a>
+        <fa-icon class="icones" [icon]="faStackExchange"></fa-icon>
+        <span class="ms-1 d-none d-sm-inline links_name">Empréstimos</span>
+      </a>
+    </li>
+
+    <li class="profile" (click)="deslogar()">
+      <a class="nav-link align-middle px-0 pointer sair">
+        <fa-icon [icon]="faPowerOff"></fa-icon>
+        <span class="ms-1 d-none d-sm-inline">Sair</span>
+      </a>
+    </li>
+  </ul>
 </div>
